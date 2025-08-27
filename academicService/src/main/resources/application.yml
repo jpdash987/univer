@@ -1,0 +1,37 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: academic-service
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/ums?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root@1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+#app:
+#  s3:
+#    bucket: ${S3_BUCKET:}
+#    region: ${AWS_REGION:us-east-1}
+#    presign-seconds: ${S3_PRESIGN_SECONDS:3600}
+
+logging:
+  level:
+    root: INFO
