@@ -8,10 +8,12 @@ import com.univer.notification.events.model.FeePaidEvent;
 import com.univer.notification.events.model.GradeUploadedEvent;
 import com.univer.notification.service.NotificationService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(name = "spring.kafka.bootstrap-servers", matchIfMissing = false)
 public class KafkaEventListener {
 
     private final ObjectMapper mapper;

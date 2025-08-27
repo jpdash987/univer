@@ -7,10 +7,12 @@ import com.univer.notification.events.model.FeePaidEvent;
 import com.univer.notification.events.model.GradeUploadedEvent;
 import com.univer.notification.service.NotificationService;
 import io.awspring.cloud.sqs.annotation.SqsListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(name = "app.sqs.queues.admissionApproved", matchIfMissing = false)
 public class SqsEventListener {
 
     private final NotificationService notifications;
