@@ -1,7 +1,7 @@
 package org.ums.web;
 
-import com.university.student.model.Admission;
-import com.university.student.service.AdmissionService;
+import org.ums.model.Admission;
+import org.ums.service.AdmissionService;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
